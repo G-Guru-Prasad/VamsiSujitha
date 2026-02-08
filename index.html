@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Vamsi ❤️ Sujitha</title>
+
+  <style>
+    * {
+      box-sizing: border-box;
+      font-family: "Poppins", system-ui, sans-serif;
+    }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      background: linear-gradient(135deg, #fff3b0, #ffd166);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+    }
+
+    /* Floating hearts */
+    .heart {
+      position: absolute;
+      font-size: 20px;
+      opacity: 0.6;
+      animation: float 6s linear infinite;
+    }
+
+    @keyframes float {
+      0% {
+        transform: translateY(100vh) scale(0.5);
+        opacity: 0;
+      }
+      20% {
+        opacity: 0.6;
+      }
+      100% {
+        transform: translateY(-10vh) scale(1.2);
+        opacity: 0;
+      }
+    }
+
+    .card {
+      background: #fff;
+      padding: 28px 22px 32px;
+      border-radius: 20px;
+      max-width: 360px;
+      width: 90%;
+      text-align: center;
+      box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+      position: relative;
+      z-index: 2;
+    }
+
+    h1 {
+      margin: 0;
+      color: #ff8c00;
+      font-size: 1.8rem;
+    }
+
+    h2 {
+      margin-top: 6px;
+      color: #444;
+      font-weight: 500;
+    }
+
+    p {
+      margin: 16px 0 26px;
+      color: #555;
+      font-size: 1.05rem;
+    }
+
+    .buttons {
+      display: flex;
+      justify-content: center;
+      gap: 16px;
+      position: relative;
+    }
+
+    button {
+      padding: 12px 22px;
+      border-radius: 30px;
+      border: none;
+      font-size: 1rem;
+      cursor: pointer;
+      transition: 0.3s ease;
+    }
+
+    #yesBtn {
+      background: #ff8c00;
+      color: white;
+      box-shadow: 0 6px 16px rgba(255,140,0,0.4);
+    }
+
+    #yesBtn:hover {
+      transform: scale(1.08);
+    }
+
+    #noBtn {
+      background: #eee;
+      color: #333;
+      position: relative;
+    }
+
+    .message {
+      margin-top: 18px;
+      font-size: 0.95rem;
+      color: #d17a00;
+      min-height: 22px;
+      font-weight: 500;
+    }
+
+    .success {
+      font-size: 1.4rem;
+      color: #ff8c00;
+      margin-top: 18px;
+      font-weight: 600;
+    }
+
+    @media (max-width: 400px) {
+      h1 {
+        font-size: 1.6rem;
+      }
+      p {
+        font-size: 1rem;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Floating hearts -->
+  <script>
+    function createHeart() {
+      const heart = document.createElement("div");
+      heart.className = "heart";
+      heart.innerText = "💛";
+      heart.style.left = Math.random() * 100 + "vw";
+      heart.style.animationDuration = 4 + Math.random() * 4 + "s";
+      document.body.appendChild(heart);
+
+      setTimeout(() => {
+        heart.remove();
+      }, 8000);
+    }
+
+    setInterval(createHeart, 500);
+  </script>
+
+  <div class="card">
+    <h1>Vamsi 💛 Sujitha</h1>
+    <h2>A little question…</h2>
+
+    <p>
+      Sujitha, will you be my Valentine and make this day extra special with me? 🌼✨
+    </p>
+
+    <div class="buttons">
+      <button id="yesBtn">YES 💛</button>
+      <button id="noBtn">NO 🙈</button>
+    </div>
+
+    <div class="message" id="message"></div>
+  </div>
+
+  <script>
+    const noBtn = document.getElementById("noBtn");
+    const message = document.getElementById("message");
+    const yesBtn = document.getElementById("yesBtn");
+
+    const noMessages = [
+      "Are you sure? 🥺",
+      "Think again… I’ll wait 💛",
+      "That button is feeling shy 😌",
+      "No is not an option today 😉",
+      "Your YES is loading… ⏳",
+      "Even the sun says YES ☀️",
+      "Okay, that was cute. Try YES 😄"
+    ];
+
+    noBtn.addEventListener("click", () => {
+      const randomX = Math.random() * 140 - 70;
+      const randomY = Math.random() * 120 - 60;
+      noBtn.style.transform = `translate(${randomX}px, ${randomY}px)`;
+
+      message.innerText =
+        noMessages[Math.floor(Math.random() * noMessages.length)];
+    });
+
+    yesBtn.addEventListener("click", () => {
+      document.querySelector(".card").innerHTML = `
+        <div class="success">
+          💛 YAYYYY! 💛<br><br>
+          Happy Valentine’s Day<br>
+          Vamsi ❤️ Sujitha 🌼
+        </div>
+      `;
+    });
+  </script>
+
+</body>
+</html>
